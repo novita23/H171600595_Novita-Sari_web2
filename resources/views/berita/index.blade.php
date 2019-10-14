@@ -22,7 +22,7 @@
                     </thead>
                     <tbody>
 
-                        @foreach( $berita as $item)
+                        @foreach( $Berita as $item)
                         <tr>
                         <td>{!! $item->id !!}</td>
                         <td>{!! $item->judul !!}</td>
@@ -32,7 +32,16 @@
                         !!}</td>
                         <td>{!! $item->kategori_berita_id !!}</td>
                         <td>
-                         <a href="{!! route('berita.show',[$item->id]) !!}">Detail</a>
+                        <a href="{!! route('berita.show',[$item->id]) !!}" class="btn btn-sm btn-primary">Detail</a>
+                        
+                        <a href="{!! route('berita.edit',[$item->id]) !!}" class="btn btn-sm btn-warning">Edit</a>
+                        
+
+                        {!! Form::open(['route'=>['berita.destroy',$item->id],'method'=>'delete']) !!}
+
+                        {!! Form::submit('Hapus', ['class'=>'btn btn-sm btn-danger','onclick'=>"return confirm ('yakin menghapus data ini?')"]); !!}
+
+                        {!! Form::close() !!}
                         </td>
                         </tr>
                        @endforeach

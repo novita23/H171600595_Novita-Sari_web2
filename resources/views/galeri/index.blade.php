@@ -31,7 +31,16 @@
                         <td>{!! $item->users_id !!}</td>
                         <td>{!! $item->kategori_galeri_id !!}</td>
                         <td>
-                         <a href="{!! route('galeri.show',[$item->id]) !!}">Detail</a>
+                        <a href="{!! route('galeri.show',[$item->id]) !!}" class="btn btn-sm btn-primary">Detail</a>
+                        
+                        <a href="{!! route('galeri.edit',[$item->id]) !!}" class="btn btn-sm btn-warning">Edit</a>
+                        
+
+                        {!! Form::open(['route'=>['galeri.destroy',$item->id],'method'=>'delete']) !!}
+
+                        {!! Form::submit('Hapus', ['class'=>'btn btn-sm btn-danger','onclick'=>"return confirm ('yakin menghapus data ini?')"]); !!}
+
+                        {!! Form::close() !!}
                         </td>
                         </tr>
                        @endforeach

@@ -24,8 +24,6 @@
         <script>
                 $(document).ready(function() {
                  CKEDITOR.replace( 'isi' );
-
-
                 });
         </script>
 @endsection

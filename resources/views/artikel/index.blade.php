@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Artikel</div>
+                <div class="card-header bg-info">Artikel</div>
                 <div class="card-body">
                     
                 <table class="table table-bordered">
@@ -15,14 +15,14 @@
                         <th scope="col">Judul</th>
                         <th scope="col">Isi</th>
                         <th scope="col">Kategori</th>
-                        <th scope="col">Users Id</th>
+                        <th scope="col">Users_id</th>
                         <th scope="col">Create</th>
                         <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        @foreach( $artikel as $item)
+                        @foreach( $Artikel as $item)
                         <tr>
                         <td>{!! $item->id !!}</td>
                         <td>{!! $item->judul !!}</td>
@@ -32,13 +32,24 @@
                         !!}</td>
                         <td>{!! $item->kategori_artikel_id !!}</td>
                         <td>
-                         <a href="{!! route('artikel.show',[$item->id]) !!}">Detail</a>
+
+                        <a href="{!! route('artikel.show',[$item->id]) !!}" class="btn btn-sm btn-primary">Detail</a>
+                        
+                        <a href="{!! route('artikel.edit',[$item->id]) !!}" class="btn btn-sm btn-warning">Edit</a>
+                        
+
+                        {!! Form::open(['route'=>['artikel.destroy',$item->id],'method'=>'delete']) !!}
+
+                        {!! Form::submit('Hapus', ['class'=>'btn btn-sm btn-danger','onclick'=>"return confirm ('yakin menghapus data ini?')"]); !!}
+
+                        {!! Form::close() !!}
+
                         </td>
                         </tr>
                        @endforeach
                     </tbody>
                 </table>
-                <a href="{!! route('artikel.create') !!}" class="btn btn-primary">Tambah Data</a>
+                <a href="{!! route('artikel.create') !!}" class="btn btn-warning">Tambah Data</a>
             </div>
         </div>
     </div>
